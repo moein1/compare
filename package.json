@@ -4,7 +4,7 @@
   "description": "a simple application to validate the credit card using node and react",
   "main": "server.js",
   "scripts": {
-    "webpack": "webpack"
+    "serve": "node server.js"
   },
   "keywords": [
     "node",

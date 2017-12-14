@@ -3,26 +3,42 @@ import React from 'react';
 export default class App extends React.Component{
     constructor(props){
         super(props);
+        /**
+       * Initial the states of the page    
+       */
         this.state={
            cardName :  '',
-           result : 'result'
+           result : ''
         }
     }
+     /**
+     * Handles submit card function     
+     */
     submitCard(){
         var typeList = ['VISA', 'MasterCard', 'Discover', 'AMEX'];
         var cardType = 'Unknown';
         var card = this.state.cardName;
+
+        //exec the first checking to vailidate the card first digits and the length of the card
         for (let i = 0; i < typeList.length; i++) {
             cardType = this.firstCheck(card, typeList[i]) ? typeList[i] : 'Unknown';
             if (cardType !== 'Unknown') break;
         }
 
+        //exec the second checking to validate the card according to the Luhn algorithm
+        // and show the final result on the page 
         this.setState({
             result :this.secondCheck(card) ?
             `${cardType}: ${card}   (valid)` : `${cardType}: ${card}  (Invalid)`
         })
     }
 
+    /**
+     * Handles the vakidation of the card based on the starting digits 
+     * and length of the card number
+     * @param {string} card card number
+     * @param {string} type card type
+     */
     firstCheck(card, type) {
         var result;
         switch (type) {
@@ -49,6 +65,10 @@ export default class App extends React.Component{
         return result;
     }
 
+    /**
+     * Handles the vakidation of the card based on the Luhn algorithm 
+     * @param {string} card card number
+     */
     secondCheck(card) {
         var counter = 0;
         var sum = 0;
@@ -66,12 +86,20 @@ export default class App extends React.Component{
         return sum % 10 == 0;
     }
 
+    /**
+     * Handles on change event of the card
+     * @param {event} card change event of card
+     */
     handleChange(event){
         this.setState({
             cardName : event.target.value
         })
         
     }
+
+    /**
+     * Handles rendering the jsx file that should be shown as the html in browser 
+     */
     render(){
         return (
             <div>
