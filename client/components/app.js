@@ -105,7 +105,7 @@ export default class App extends React.Component{
         return (
             <div>
                 <header>
-              <h1>Compare The Price</h1>
+              <h1>Compare The Market</h1>
             </header>
             <section>
               <div className="main">
