@@ -92,7 +92,8 @@ export default class App extends React.Component{
      */
     handleChange(event){
         this.setState({
-            cardName : event.target.value
+            cardName : event.target.value,
+            result :''
         })
         
     }
@@ -107,10 +108,9 @@ export default class App extends React.Component{
               <h1>Compare The Price</h1>
             </header>
             <section>
-              <h3>Check Credit Card</h3>
               <div className="main">
                 <div className="form-group">
-                 <label>Card</label>
+                 <label>Enter Card Number</label>
                  <input type="number" 
                  value={this.state.cardName} 
                  className="form-control"
